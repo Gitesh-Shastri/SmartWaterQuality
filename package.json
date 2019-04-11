@@ -1,0 +1,23 @@
+{
+  "name": "smartwaterquality",
+  "version": "1.0.0",
+  "description": "Smart Water Quality System Using IOT",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Smart",
+    "Water",
+    "Quality"
+  ],
+  "author": "Gitesh_Shastri",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.1",
+    "morgan": "^1.9.1"
+  }
+}

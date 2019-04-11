@@ -1,0 +1,5 @@
+{
+    "env": {
+      "MONGODB_URI": "mongodb://Gitesh:gitesh1@ds119088.mlab.com:19088/warehousecamp"
+    }
+  }
