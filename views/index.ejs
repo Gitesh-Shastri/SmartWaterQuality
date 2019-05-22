@@ -1,0 +1,83 @@
+<% include header %>   
+<nav class="navbar  navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">Smart Water</a>
+    <ul class="navbar-nav">
+        <a href="/logout">Logout</a>
+    </ul>
+</nav>
+<div class="container" style="margin-top: 20px;">
+    <h3>Latest Data</h3>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    Temperature
+                  </div>
+                  <div class="card-body">
+                    <%= doc[0].temperature %>                  
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    Ph
+                  </div>
+                  <div class="card-body">
+                    <%= doc[0].PH %>    
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    Conductivity
+                  </div>
+                  <div class="card-body">
+                        <%= doc[0].Conductivity %> mho/cm                   
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    Turbidity
+                  </div>
+                  <div class="card-body">
+                        <%= doc[0].turbidity %>              
+                  </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br/>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Temperature</th>
+                <th>Ph</th>
+                <th>Conductivity</th>
+                <th>Turbidity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%  doc.forEach( d => { %>
+                <tr>
+                    <td>
+                        <%= d.temperature %>
+                    </td>
+                    <td>
+                        <%= d.PH %>
+                    </td>
+                    <td>
+                        <%= d.Conductivity %>
+                    </td>
+                    <td>
+                        <%= d.turbidity %>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<% include footer %>    
