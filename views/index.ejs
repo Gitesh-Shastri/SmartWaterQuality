@@ -54,6 +54,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Time With Date</th>
                 <th>Temperature</th>
                 <th>Ph</th>
                 <th>Conductivity</th>
@@ -63,6 +64,9 @@
         <tbody>
             <%  doc.forEach( d => { %>
                 <tr>
+                    <td>
+                        <%= d.created_at %>
+                    </td>
                     <td>
                         <%= d.temperature %>
                     </td>
