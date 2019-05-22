@@ -130,7 +130,7 @@ app.use('/', (req, res, next) => {
 	water_quality.turbidity = Math.floor(Math.random() * (85 - 60) + 60) / 10 + '';
 	water_quality.save();
 	Water_quality.find()
-		.sort({ id: -1 })
+		.sort({ _id: -1 })
 		.exec()
 		.then((doc) => {
 			res.render('index', { doc: doc });
