@@ -80,17 +80,17 @@ app.post('/login', (req, res, next) => {
 		});
 });
 
-cron.schedule('* * * * *', () => {
-	var water_quality = new Water_quality();
-	water_quality.user = '5ce163407191c40881e32a99';
-	water_quality.temperature = '-';
-	water_quality.Conductivity = Math.floor(Math.random() * (100 - 50) + 50) / 100;
-	water_quality.PH = Math.floor(Math.random() * (85 - 60) + 60) / 10;
-	water_quality.turbidity = '-';
-	water_quality.save();
-	console.log(water_quality);
-	console.log('running a task every minute');
-});
+// cron.schedule('* * * * *', () => {
+// 	var water_quality = new Water_quality();
+// 	water_quality.user = '5ce163407191c40881e32a99';
+// 	water_quality.temperature = '-';
+// 	water_quality.Conductivity = Math.floor(Math.random() * (100 - 50) + 50) / 100;
+// 	water_quality.PH = Math.floor(Math.random() * (85 - 60) + 60) / 10;
+// 	water_quality.turbidity = '-';
+// 	water_quality.save();
+// 	console.log(water_quality);
+// 	console.log('running a task every minute');
+// });
 
 app.get('/logout', (req, res, next) => {
 	req.session.destroy(function(err) {
@@ -104,6 +104,17 @@ app.get('/logout', (req, res, next) => {
 
 app.get('/signup', (req, res, next) => {
 	res.render('signup');
+});
+
+app.get('/getcontent', (req, res, next) => {
+	Water_quality.find()
+		.exec()
+		.then((doc) => {
+			res.status(200).json({ results: doc });
+		})
+		.catch((err) => {
+			res.redirect('/login');
+		});
 });
 
 app.post('/signup', (req, res, next) => {
@@ -122,13 +133,13 @@ app.post('/signup', (req, res, next) => {
 });
 
 app.use('/', (req, res, next) => {
-	var water_quality = new Water_quality();
-	water_quality.user = '5ce163407191c40881e32a99';
-	water_quality.temperature = '-';
-	water_quality.Conductivity = Math.floor(Math.random() * (100 - 50) + 50) / 100;
-	water_quality.PH = Math.floor(Math.random() * (85 - 60) + 60) / 10;
-	water_quality.turbidity = '-';
-	water_quality.save();
+	// var water_quality = new Water_quality();
+	// water_quality.user = '5ce163407191c40881e32a99';
+	// water_quality.temperature = '-';
+	// water_quality.Conductivity = Math.floor(Math.random() * (100 - 50) + 50) / 100;
+	// water_quality.PH = Math.floor(Math.random() * (85 - 60) + 60) / 10;
+	// water_quality.turbidity = '-';
+	// water_quality.save();
 	Water_quality.find()
 		.exec()
 		.then((doc) => {
