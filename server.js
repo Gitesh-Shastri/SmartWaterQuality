@@ -95,17 +95,15 @@ app.post('/login', (req, res, next) => {
 		});
 });
 
-// cron.schedule('* * * * *', () => {
-// 	var water_quality = new Water_quality();
-// 	water_quality.user = '5ce163407191c40881e32a99';
-// 	water_quality.temperature = '-';
-// 	water_quality.Conductivity = Math.floor(Math.random() * (100 - 50) + 50) / 100;
-// 	water_quality.PH = Math.floor(Math.random() * (85 - 60) + 60) / 10;
-// 	water_quality.turbidity = '-';
-// 	water_quality.save();
-// 	console.log(water_quality);
-// 	console.log('running a task every minute');
-// });
+cron.schedule('* * * * *', () => {
+	var water_quality = new Water_quality();
+	water_quality.user = '5ce163407191c40881e32a99';
+	water_quality.temperature = '-';
+	water_quality.Conductivity = Math.floor(Math.random() * (300 - 110) + 110) / 100;
+	water_quality.PH = Math.floor(Math.random() * (70 - 60) + 60) / 10;
+	water_quality.turbidity = Math.floor(Math.random() * (85 - 60) + 60) / 10;
+	water_quality.save();
+});
 
 app.get('/logout', (req, res, next) => {
 	req.session.destroy(function(err) {
@@ -129,7 +127,7 @@ app.get('/getcontent', (req, res, next) => {
 				.select('_id created_at temperature Conductivity PH turbidity')
 				.exec()
 				.then((doc) => {
-					res.status(200).json({ results: doc.reverse() });
+					res.status(200).json({ results: doc });
 				})
 				.catch((err) => {
 					res.status(200).json({ message: 'Error Occured' });
